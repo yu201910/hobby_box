@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft JhengHei", "微軟正黑體", "Microsoft YaHei", sans-serif;
+            background-color: #CEC8BC;
+        }
+
+        /* Banner */
+
+        .swiper-container {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            /* Center slide text vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .banner_button {
+            position: absolute;
+            bottom: 50px;
+            transition: all 0.2s linear;
+        }
+
+        .banner_button li {
+            list-style-type: none;
+
+        }
+
+        .banner_button li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .banner_image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-button-next {
+            color: darkgray;
+        }
+
+        .swiper-button-prev {
+            color: darkgray;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background-color: #938075;
+
+        }
+
+        .navbar .fixedattop {
+            position: fixed;
+            top: 0px;
+
+        }
+
+        .navbar_all {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .navbar_logo {
+            flex-grow: 1;
+        }
+
+        .navbar_logo img {
+            width: 150px;
+        }
+
+        .navbar_linkMain {
+            flex-grow: 2;
+            align-self: center;
+        }
+
+        .navbar_all ul li a {
+            text-decoration: none;
+            font-family: "Microsoft JhengHei", "微軟正黑體", "Microsoft YaHei", sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: black;
+            display: block;
+        }
+
+        .navbar_all ul li a:hover {
+            color: brown;
+        }
+
+        .links1 {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            margin: 0px;
+        }
+
+        .navbar_linkSecondary {
+            flex-grow: 2;
+            align-self: center;
+        }
+
+        .links2 {
+            display: flex;
+            justify-content: flex-end;
+            list-style-type: none;
+            margin: 0px 10px;
+        }
+
+        .links2 li {
+            margin: 0 5px;
+        }
+
+        /* about */
+        #about {
+            background-color: #CEC8BC;
+        }
+
+        .title h3 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-weight: 600;
+            margin: 30px 0;
+        }
+
+        .about_subtitle h4 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .about_content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .about_images {
+            padding: 0;
+        }
+
+        .about_image_group1 {
+            margin: 0 0 15px 0;
+        }
+
+        .about_image_group1 img {
+            width: 40%;
+            margin: 0 15px 0 0px;
+        }
+
+        .about_image_group2 img {
+            width: 80%;
+            box-shadow: #938075 20px 20px;
+        }
+
+        .about_text1 {
+            margin: 0 0 42px 0;
+        }
+
+        .about_text2 {
+            margin: 0 0 42px 0;
+        }
+
+        .about_text_title {
+            border-radius: 10rem;
+            background-color: #938075;
+            text-align: center;
+            padding: 17px;
+            margin-bottom: 20px;
+
+        }
+
+        .about_text_title h5 {
+            font-size: 25px;
+            margin: 0px;
+            font-weight: 600;
+        }
+
+        .about_text_content {
+            font-size: 19px;
+
+        }
+
+        /* 類型 */
+        .classification .row {
+            margin: 30px;
+        }
+
+        .classification_title h2 {
+            font-size: 25px;
+            font-weight: 600;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .classification .container {
+            max-width: 1000px;
+        }
+
+        /* 使命 */
+        #misson {
+            height: 250px;
+            padding-top: 30px;
+            background-image: url('http://static1.squarespace.com/static/5866ffbad2b857fd0d13208e/5880f1f005b03728fdaf0c16/5cd42c54419202b37b3f3d82/1571923139618/andrian-valeanu-82531-unsplash+%281%29.jpg?format=1500w');
+            background-size: cover;
+            background-position: center;
+            opacity: 1;
+        }
+
+        .misson_all {
+            width: 93%;
+            background-color: transparent;
+            padding: 0px 0px 40px 0px;
+            margin: 0 auto;
+            border: white solid 3px;
+        }
+
+        .misson_title h2 {
+            text-align: center;
+            color: white;
+            margin: 30px 0 30px 0;
+            font-size: 35px;
+        }
+
+        .misson_content {
+            text-align: center;
+            color: white;
+        }
+
+        .misson_content p {
+            font-size: 23px;
+        }
+
+        /* 本月主題 */
+        .theme_all {
+            display: flex;
+            padding: 50px;
+            background-color: #CEC8BC
+        }
+
+        .theme_image {
+            width: 70%;
+        }
+
+        .theme_image img {
+            width: 100%;
+        }
+
+        .theme_content {
+            width: 30%;
+            background-color: black;
+            opacity: 0.85;
+        }
+
+        .theme_title {
+            text-align: center;
+            color: white;
+        }
+
+        .theme_title h2 {
+            margin: 30px;
+            font-size: 35px;
+
+        }
+
+        .theme_text {
+            color: white;
+            font-size: 25px;
+            margin: -8px 63px 0px;
+        }
+
+        .theme_text p {
+            margin: 90px 0;
+        }
+
+        .theme_content button {
+            margin-left: calc(50% - 47px);
+        }
+
+        /* 歷史查詢 */
+        .form {
+            height: 200px;
+            background-color: black;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .form_title h2 {
+            color: white;
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .form_image {
+            position: absolute;
+            top: 22px;
+            left: 40px;
+        }
+
+        .form_image2 {
+            position: absolute;
+            top: 22px;
+            right: 40px;
+        }
+
+        .form .btn {
+            height: 38px;
+        }
+
+        /* 組合方案 */
+
+        .subscription {
+            background-image: url("./image/方案訂閱/訂閱背景2-05.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-bottom: 50px;
+        }
+
+        .subscription_all {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .subscription_title h2 {
+            color: black;
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .subscription_content .card {
+            padding: 0px;
+            margin: 0 15px;
+
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title {
+            font-weight: 600;
+        }
+
+
+        /* 留言表單 */
+        #contact {
+            background-color: #CEC8BC;
+        }
+
+        #contact .container {
+            display: flex;
+        }
+
+        .contact_all_title {
+            text-align: center;
+            font-size: 35px;
+            font-weight: 600;
+            padding: 50px;
+
+        }
+
+        .contact_form {
+            width: 50%;
+            background-color: #938075;
+            padding: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 0 30px black;
+        }
+
+        .contact_title h2 {
+            font-size: 25px;
+            font-weight: 600;
+            text-align: center;
+            padding: 23px;
+        }
+
+        .contact_detail {
+            width: 50%;
+        }
+
+        .contact_question {
+            color: white;
+            margin: 0px 50px;
+            display: inline-block;
+        }
+
+        .modal-title {
+            color: black;
+            font-weight: 600;
+        }
+
+        .modal-body h5 {
+            color: black;
+            font-weight: 600;
+        }
+
+        .modal-body p {
+            color: black;
+        }
+
+        .contact_detail_title {
+            background-color: black;
+            color: white;
+            padding: 10px 17px;
+            margin: 30px 50px 0px 50px;
+            display: inline-block;
+            border-radius: 0.2rem;
+            font-size: 20px;
+        }
+
+        .contact_content {
+            margin: 30px 50px;
+        }
+
+        /* footer */
+        #footer {
+            background-color: #938075;
+        }
+
+        .social_title {
+            font-size: 25px;
+            font-weight: 600;
+            text-align: center;
+            padding: 25px;
+
+        }
+
+        .social_icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .copyright {
+            text-align: center;
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: white;
+        }
+
+        .copyright p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="banner_image" src="./image/banner/首頁.jpg" alt="">
+                    <ul class="banner_button btn btn-outline-dark border-light">
+                        <li><a href="#about">開始探索</a>
+                    </ul>
+                </div>
+                <div class="swiper-slide"><img class="banner_image" src="./image/banner/C4WcRQeVMAENLna.jpg" alt="">
+                    <ul class="banner_button btn btn-outline-dark border-light">
+                        <li><a href="#about">開始探索</a>
+                    </ul>
+                </div>
+                <div class="swiper-slide"><img class="banner_image"
+                        src="./image/banner/20861899_1475762212482171_1766205133724260022_o.jpg" alt="">
+                    <ul class="banner_button btn btn-outline-dark border-light">
+                        <li><a href="#about">開始探索</a>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="navbar navbar-expand-lg navbar-light ">
+            <div class="navbar_all">
+                <div class="navbar_logo d-none d-lg-block d-xl-block">
+                    <img src="./image/logo.PNG" alt="">
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar_linkMain collapse navbar-collapse " id="navbarToggleExternalContent">
+                    <ul class="links1 navbar-nav ">
+                        <li class="mx-lg-4"><a href="">首頁</a>
+                        <li class="mx-lg-4"><a href="#about">關於興趣箱</a>
+                            <!-- <ul> c
+                                    <li><a data-scroll href=>興趣箱簡介</a></li>
+                                    <li><a data-scroll href=>使命</a></li>
+                                </ul> -->
+                        </li>
+                        <li class="mx-lg-4"><a href="#subscription">立即訂閱</a></li>
+                        <li class="mx-lg-4"><a href="#form">歷史查詢</a></li>
+                        <li class="mx-lg-4"><a href="#contact">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="navbar_linkSecondary collapse navbar-collapse justify-content-end"
+                    id="navbarToggleExternalContent">
+                    <ul class="links2 navbar-nav">
+                        <li><a href=""> <img src="./image/account.png" alt="">會員</a></li>
+                        <li><a href=""><img src="./image/shopping-cart-black-shape.png" alt="">購物車</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="about" class="container">
+        <div class="title">
+            <h3>關於興趣箱</h3>
+        </div>
+        <div class="about_subtitle">
+            <h4>❖興趣箱是什麼 ?</h4>
+        </div>
+        <div class="about_content row">
+            <div class="about_images col-xl-6">
+                <div class="about_image_group1">
+                    <img src="./image/熱銷10/香水.jpg" alt="">
+                    <img src="./image/熱銷10/手工筆記本裝訂套件.jpg" alt="">
+                </div>
+                <div class="about_image_group2">
+                    <img src="./image/banner/IMG_4439.jpg" alt="">
+                </div>
+            </div>
+            <div class="about_context col-xl-6">
+                <div class="about_text1">
+                    <div class="about_text_title">
+                        <h5>為您尋找獨特的材料</h5>
+                    </div>
+                    <div class="about_text_content">
+                        <p>每一個興趣箱內附必要的材料、配件以及工具，幫助您節省時間和減少四處購買材料的不便，讓您在探索興趣時不會感到壓力。</p>
+                    </div>
+                </div>
+                <div class="about_text2">
+                    <div class="about_text_title">
+                        <h5>定期寄送不同風格品項</h5>
+                    </div>
+                    <div class="about_text_content">
+                        <p>我們會選擇不同風格品項的興趣箱，定期寄送到府，幫助您體驗從未嘗試過的項目，我們希望當您在打開興趣箱時，帶給你滿滿的驚喜。</p>
+                    </div>
+                </div>
+                <div class="about_text3">
+                    <div class="about_text_title">
+                        <h5>幫助您每月探索新的興趣</h5>
+                    </div>
+                    <div class="about_text_content">
+                        <p>我們致力撰寫有趣又簡單的說明，協助您開始接觸各種手工製作，並從手作中激發潛能，進而找到新的興趣。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="classification" class="classification">
+        <div class="container">
+            <div class="about_subtitle">
+                <h4> ❖興趣箱裡有什麼?</h4>
+            </div>
+            <div class="classification_content row  justify-content-md-center">
+                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/配飾.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/食品.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/植栽.jpg" alt="">
+            </div>
+            <div class="classification_content row justify-content-md-center">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/木製.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/蠟燭.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/著色.jpeg" alt="">
+            </div>
+            <div class="classification_content row justify-content-md-center">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/黏土.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/紙藝.jpg" alt="">
+                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/皮革.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="misson">
+        <div class="misson_all ">
+            <div class="container">
+                <div class="misson_title">
+                    <h2>我們的使命</h2>
+                </div>
+                <div class="misson_content">
+                    <p>透過我們精心挑選的材料和簡單的說明手冊，協助訂閱者開發新的興趣，讓您在探索自己的路上樂趣滿載。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="theme">
+        <div class="theme_all ">
+            <div class="theme_image"><img src="./image/OAIGQU0.jpg" alt=""></div>
+            <div class="theme_content">
+                <div class="theme_title">
+                    <h2>本月主題</h2>
+                </div>
+                <div class="theme_text">
+                    <p>隨著<br>次日清晨的一縷陽光<br>灰飛煙滅</p>
+                    <p>留下一場冬日美夢......</p>
+                </div>
+                <button type="button" class="btn btn-light  btn-lg">猜箱去</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="form" class="form">
+        <div class="container">
+            <div class="form_title ">
+                <h2>歷史查詢</h2>
+            </div>
+            <form>
+                <div class="form-row justify-content-lg-center">
+                    <div class="col-lg-2  ">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Year</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Month</option>
+                                <option>JANUARY</option>
+                                <option>FEBRUARY</option>
+                                <option>MARCH</option>
+                                <option>APRIL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary col-lg-1 ">
+                        <img src="./image/searching-magnifying-glass24.png" alt=""> &nbsp搜尋</button>
+                </div>
+            </form>
+            <div class="form_image ">
+                <img width="180px" height="180px" src="./image/歷史查詢icons/歷史查詢icon-02.png" alt="">
+            </div>
+            <div class="form_image2 ">
+                <img width="180px" height="180px" src="./image/歷史查詢icons/歷史查詢-03.png" alt=""></div>
+        </div>
+    </div>
+
+    <div id="subscription" class="subscription">
+        <div class="container">
+            <div class="subscription_all">
+                <div class="subscription_title">
+                    <h2> 訂閱方案</h2>
+                </div>
+                <div class="subscription_content row justify-content-xl-center justify-content-md-center">
+                    <div class="card col-xl-3 col-md-3 col-12 " style="width: 18rem;">
+                        <img src="./image/方案訂閱/1月.PNG" class="card-img-top" alt="...">
+                        <div class="card-body  ">
+                            <h5 class="card-title">1個月方案</h5>
+                            <p class="card-text">$300/月</p>
+                            <a href="#" class="btn btn-dark ">立即訂閱 </a>
+                        </div>
+                    </div>
+                    <div class="card col-xl-3 col-md-3 col-12" style="width: 18rem;">
+                        <img src="./image/方案訂閱/3月.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">3個月方案</h5>
+                            <p class="card-text">$810/3月</p>
+                            <a href="#" class="btn btn-dark">立即訂閱 </a>
+                        </div>
+                    </div>
+                    <div class="card col-xl-3 col-md-3 col-12" style="width: 18rem;">
+                        <img src="./image/方案訂閱/6月.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">6個月方案</h5>
+                            <p class="card-text">$1440/6月</p>
+                            <a href="#" class="btn btn-dark ">立即訂閱 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div class="contact_all_title">
+            <h2>聯絡我們</h2>
+        </div>
+        <div class="container">
+            <div class="contact_form">
+                <div class="contact_title">
+                    <h2>聯絡我們</h2>
+                </div>
+                <form>
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-3 col-form-label">姓名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPhone" class="col-sm-3 col-form-label">電話</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleFormControlTextarea1" class="col-sm-3 col-form-label">留言內容</label>
+                        <div class="col-sm-9"> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="請輸入文字"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleFormControlFile1" class="col-sm-3 ">照片上傳</label>
+                        <input type="file" class="form-control-file col-sm-9 " id="exampleFormControlFile1">
+                    </div>
+                    <div class="form-group row justify-content-xl-center justify-content-md-center ">
+                        <div class="col-sm-3 ">
+                            <button type="submit" class="btn btn-dark  ">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="contact_detail">
+                <div class="contact_question">
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal">
+                        常見問題
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">常見問題</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5> Q1.我的興趣箱什麼時候到達？</h5>
+                                    <p> ANS.我們每一個月5日左右發貨，並需要1-3天的發貨時間。</p>
+                                    <h5> Q2.我未收到興趣箱怎麼辦?</h5>
+                                    <p> ANS.請立即通過信箱與我們聯繫。</p>
+                                    <h5> Q3.我的訂閱會自動續訂嗎？</h5>
+                                    <p> ANS.不會自動續訂，但您將收到一封電子郵件，提醒您進行續訂。</p>
+                                    <h5> Q4.您在國際上運送嗎？</h5>
+                                    <p> ANS.是，國際訂單的統一費用為15美元。裝箱後會寄出USPS，然後由海關處理後再寄給您當地的郵政服務。</p>
+                                    <h5> Q5.如何退貨?</h5>
+                                    <p> ANS.若材料包有重大瑕疵或者是缺件，請立即填寫留言表單與我們聯繫，會有專人為您服務。</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact_information">
+                    <div class="contact_detail_title">聯絡資訊</div>
+                    <div class="contact_content">
+                        <p>服務時間:9:00~17:00</p>
+                        <p>電話:00-12345678</p>
+                        <p>信箱:hobbyboxtw@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact_images">
+                    <img src="./image/contact-02.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="social_title">Follow us</div>
+            <div class="social_icons">
+                <div class="social_FB">
+                    <a href=""><img src="./image/social-icons/fb-11.png" alt=""></a>
+                </div>
+                <div class="social_IG">
+                    <a href=""><img src="./image/social-icons/ig-09.png" alt=""></a>
+                </div>
+                <div class="social_TOUTUBE">
+                    <a href=""><img src="./image/social-icons/YT-08.png" alt=""></a>
+                </div>
+                <div class="social_Twitter">
+                    <a href=""><img src="./image/social-icons/twitter-07.png" alt=""></a>
+                </div>
+                <div class="social_pinterest"><a href="">
+                        <img src="./image/social-icons/pt-10.png" alt=""></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>版權聲明©2019本網站純屬課程練習，圖片為hobbyinthebox所有</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- js swiper CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            loop: true,
+        });
+
+
+        // $(document).scroll(function () {
+        //     var documentScrollTop = $(document).scrollTop();
+        //     if (documentScrollTop > $('.banner').height()) {
+        //         $('.navbar').addClass('fixedattop');
+        //         var shiftContent = $('.navbar').height();
+        //         $('#about').css('margin-top', shiftContent + 'px');
+        //     }
+        //     else if ($('.navbar').hasClass('fixedattop')) {
+        //         $('.navbar').removeClass('fixedattop');
+        //         $('#about').css('margin-top', '0px');
+        //     }
+        // });
+
+    </script>
+
+</body>
+
+</html>
