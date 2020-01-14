@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.css">
+    <link href="css/hover-min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>興趣箱</title>
 
     <style>
         * {
@@ -121,9 +126,75 @@
             display: block;
         }
 
-        .navbar_all ul li a:hover {
-            color: brown;
+        .navbar_all ul li {
+            position: relative;
         }
+
+        .navbar_all ul li .dropdown:after {
+            content: "";
+            width: 96px;
+            height: 4px;
+            background: black;
+            opacity: 0;
+            transition: all 0.4s ease;
+            position: absolute;
+            top: 53px;
+            left: -7px;
+            margin-top: -3px;
+            z-index: 2;
+
+        }
+
+        .navbar_all ul li:hover .dropdown:after {
+            opacity: 1;
+        }
+
+        .navbar_all ul li a:hover {
+            color: white;
+        }
+
+        .navbar_all ul li:hover ul {
+            height: 150px;
+        }
+
+        .navbar_all ul li ul {
+            padding: 0;
+            text-align: left;
+            position: absolute;
+            width: 150px;
+            left: -10px;
+            top: 55px;
+            z-index: 12;
+            background-color: rgba(0, 0, 0, 0.781);
+            transition-duration: 0.5s;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .navbar_all ul li ul li {
+            list-style: none;
+            padding: 10px 15px;
+            line-height: 1.5;
+
+        }
+
+        .navbar_all ul li ul li a {
+            font-size: 20px;
+            font-weight: 400;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar_all ul li ul li:hover {
+            background: #938075;
+            transition: all 0.4s ease
+        }
+
+        .navbar_all ul li ul li:hover a {
+            color: white;
+            transition: all 0.4s ease
+        }
+
 
         .links1 {
             display: flex;
@@ -148,9 +219,22 @@
             margin: 0 5px;
         }
 
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
         /* about */
         #about {
             background-color: #CEC8BC;
+        }
+
+        #about:before {
+            content: "";
+            display: block;
+            height: 70px;
         }
 
         .title h3 {
@@ -220,8 +304,51 @@
         }
 
         /* 類型 */
+        #classification:before {
+            content: "";
+            display: block;
+            height: 70px;
+        }
+
         .classification .row {
             margin: 30px;
+        }
+
+        .classification_images img {
+            width: 100%;
+
+        }
+
+        .classification_images {
+            position: relative;
+        }
+
+        .mask {
+            width: 91%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: all 200ms ease-in-out;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            margin: 0 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mask:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.555);
+        }
+
+        .mask p {
+            color: white;
+            font-size: 30px;
+            border: solid 1px white;
+            margin: 0;
+            padding: 30%;
         }
 
         .classification_title h2 {
@@ -235,6 +362,13 @@
             max-width: 1000px;
         }
 
+        .swiper_mobileClassification {
+            display: none;
+        }
+
+
+
+
         /* 使命 */
         #misson {
             height: 250px;
@@ -242,15 +376,15 @@
             background-image: url('http://static1.squarespace.com/static/5866ffbad2b857fd0d13208e/5880f1f005b03728fdaf0c16/5cd42c54419202b37b3f3d82/1571923139618/andrian-valeanu-82531-unsplash+%281%29.jpg?format=1500w');
             background-size: cover;
             background-position: center;
-            opacity: 1;
+            background-attachment: fixed;
         }
 
         .misson_all {
             width: 93%;
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, 0.336);
             padding: 0px 0px 40px 0px;
             margin: 0 auto;
-            border: white solid 3px;
+            border: white solid 2px;
         }
 
         .misson_title h2 {
@@ -270,6 +404,7 @@
         }
 
         /* 本月主題 */
+
         .theme_all {
             display: flex;
             padding: 50px;
@@ -316,6 +451,7 @@
         }
 
         /* 歷史查詢 */
+
         .form {
             height: 200px;
             background-color: black;
@@ -357,6 +493,12 @@
             padding-bottom: 50px;
         }
 
+        #subscription:before {
+            content: "";
+            display: block;
+            height: 70px;
+        }
+
         .subscription_all {
             width: 100%;
             margin: 0 auto;
@@ -384,6 +526,9 @@
             font-weight: 600;
         }
 
+        .subscription_content_mobile {
+            display: none;
+        }
 
         /* 留言表單 */
         #contact {
@@ -455,6 +600,18 @@
             margin: 30px 50px;
         }
 
+        .hvr-bubble-float-bottom::before {
+            border-color: black transparent transparent transparent;
+        }
+
+        .contact_images {
+            width: 100%;
+        }
+
+        .contact_images img {
+            width: 100%;
+        }
+
         /* footer */
         #footer {
             background-color: #938075;
@@ -486,28 +643,416 @@
         .copyright p {
             margin: 0;
         }
+
+        @media (max-width: 1280px) {
+
+            /* 本月主題預告 */
+            .theme_image img {
+                height: 100%;
+            }
+
+            .theme_text p {
+                margin: 70px 0;
+            }
+
+            .theme_text {
+                margin: -8px 50px 0px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+
+            /* 關於興趣箱大平板 */
+            .about_image_group1 {
+                margin: 0 0 15px 146px;
+            }
+
+            .about_image_group1 img {
+                width: 40%;
+                margin: 0 15px 0 0px;
+            }
+
+            .about_image_group2 img {
+                width: 75%;
+                margin: 0px 0 30px 146px;
+            }
+
+            /* 使命大平板*/
+            #misson {
+                height: 287px;
+
+            }
+
+            .misson_all {
+                padding: 2%;
+            }
+
+
+            /* 本月主題預告 */
+            .theme_image img {
+                height: 100%;
+            }
+
+            .theme_text p {
+                margin: 50px 0;
+            }
+
+            .theme_text {
+                margin: -8px 20px 0px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-toggle {
+                position: relative;
+            }
+
+            #navbarToggleExternalContent {
+                transform: translateX(-117%);
+                transition: transform .35s ease;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.842);
+                position: absolute;
+                top: 56px;
+                z-index: 10;
+                width: 35%;
+            }
+
+            #navbarToggleExternalContent.menu-show {
+                transform: translateX(-8%);
+                padding: 30px 0px 100vh 0px;
+                opacity: 0.8;
+            }
+
+            .navbar_all ul li {
+                line-height: 2;
+                padding: 0 15px;
+            }
+
+            .navbar_all ul li:hover {
+                background: #938075;
+                transition: all 0.4s ease
+            }
+
+
+            .navbar_all ul li a {
+                color: rgb(255, 255, 255);
+                font-weight: 400;
+            }
+
+            .navbar_all ul li:hover .dropdown:after {
+                opacity: 0;
+            }
+
+            .navbar_all ul li ul {
+                padding: 0;
+                text-align: left;
+                position: absolute;
+                width: 150px;
+                left: 265px;
+                top: 0px;
+                z-index: 12;
+                background-color: rgba(0, 0, 0, 0.781);
+                transition-duration: 0.5s;
+                height: 0;
+                overflow: hidden;
+            }
+
+            /* 歷史查詢平板 */
+            .form {
+                height: 460px;
+            }
+
+            .form_image {
+                top: 282px;
+                left: 40px;
+            }
+
+            .form_image2 {
+                top: 282px;
+                right: 40px;
+            }
+
+            .form .btn {
+                margin: 0 5px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            /* 關於興趣箱平板 */
+            .about_image_group1 {
+                margin: 0 0 15px 100px;
+            }
+
+            .about_image_group2 img {
+                width: 72%;
+                box-shadow: #938075 5px 5px 5px;
+                margin: -1px 0 30px 100px;
+            }
+
+            #misson {
+                height: 290px;
+            }
+
+            /* 興趣箱類型平板 */
+            .mask {
+                width: 82%;
+            }
+
+            .mask p {
+                font-size: 15px;
+            }
+
+            /* 歷史查詢平板 */
+            .form {
+                height: 460px;
+            }
+
+            .form_image {
+                top: 282px;
+                left: 40px;
+            }
+
+            .form_image2 {
+                top: 282px;
+                right: 40px;
+            }
+
+            .form .btn {
+                margin: 0 5px;
+            }
+
+            /* 本月主題預告平板 */
+            .theme_all {
+                display: block;
+                padding: 15px;
+            }
+
+            .theme_image {
+                width: 100%;
+            }
+
+            .theme_content {
+                width: 100%;
+            }
+
+            .theme_title h2 {
+                margin: 0 0 30px 0;
+                padding: 30px 0 0 0;
+            }
+
+            .theme_text p {
+                margin: 50px 0;
+            }
+
+            .theme_content button {
+                margin-left: calc(50% - 47px);
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* 關於興趣箱手機板 */
+            .about_image_group1 {
+                margin: 0 0 15px 40px;
+            }
+
+            .about_image_group1 img {
+                width: 43%;
+                margin: 0 15px 0 0px;
+            }
+
+            .about_image_group2 img {
+                width: 84%;
+                margin: 0 0 30px 40px;
+            }
+
+            /* 興趣箱類型手機板 */
+
+            .classification .row {
+                margin: 30px;
+            }
+
+            .classification_title h2 {
+                font-size: 25px;
+                font-weight: 600;
+                text-align: center;
+                padding: 50px;
+            }
+
+            .classification .container {
+                max-width: 1000px;
+            }
+
+            .swiper_mobileClassification {
+                display: block;
+                margin: 15px 0 20px 0;
+            }
+
+            .classification_content {
+                display: none;
+            }
+
+            .swiper-container {
+                height: 60vh;
+            }
+
+
+            /* 使命手機板*/
+            #misson {
+                height: 287px;
+                padding-top: 13px;
+            }
+
+            .misson_all {
+                padding: 17px;
+            }
+
+            /* 訂閱方案手機板 */
+            .subscription_content {
+                display: none;
+            }
+
+            .card_mobile {
+                width: 90%;
+                background-color: white;
+                margin: 15px auto;
+                display: flex;
+                align-items: center;
+            }
+
+            .card_mobile img {
+                width: 40%;
+            }
+
+            .card_body_mobile {
+                margin: 0 auto;
+            }
+
+            .subscription_content_mobile {
+                display: block;
+            }
+
+            /* 聯絡我們手機板 */
+            #contact .container {
+                display: block;
+            }
+
+            .contact_form {
+                width: 100%;
+            }
+
+            .contact_detail {
+                width: 100%;
+            }
+
+            .contact_images {
+                width: 100%;
+            }
+
+            .contact_images img {
+                width: 400px;
+            }
+        }
+
+        @media (max-width: 414px) {
+
+            /* 漢堡選單 */
+            #navbarToggleExternalContent.menu-show {
+                transform: translateX(-10%);
+            }
+
+            .navbar_all ul li ul {
+                left: 145px;
+                top: 0px;
+
+            }
+
+            .contact_images img {
+                width: 100%;
+            }
+
+            .misson_all {
+                padding: .5%;
+            }
+
+            .theme_text {
+                margin: -16px 26px 0px;
+            }
+        }
+        @media (max-width: 375px) {
+            .navbar_all ul li ul {
+                left: 125px;
+                top: 0px;
+
+            }
+        }
+
+        @media (max-width: 320px) {
+         
+            .navbar_all ul li ul {
+                left: 115px;
+                top: 0px;
+
+            }
+
+            .about_image_group1 {
+                margin: 0 0 15px 25px;
+            }
+
+            .about_image_group2 {
+                margin: 0 9px 0px -16px;
+            }
+
+            .about_text_title h5 {
+                font-size: 22px;
+            }
+
+            #misson {
+                height: 322px;
+            }
+
+            .form_image {
+                left: 0px;
+            }
+
+            .form_image2 {
+                right: 0px;
+            }
+
+            .contact_content {
+                margin: 30px 30px;
+            }
+
+            .social_icons img {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="banner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
+    <div id="banner" class="banner">
+        <div class="swiper-container swiper_banner">
+            <div class="swiper-wrapper ">
                 <div class="swiper-slide">
                     <img class="banner_image" src="./image/banner/首頁.jpg" alt="">
-                    <ul class="banner_button btn btn-outline-dark border-light">
-                        <li><a href="#about">開始探索</a>
+                    <ul class="banner_button btn btn-outline-dark border-light hvr-wobble-vertical">
+                        <li><a href="#navbar">開始探索</a>
                     </ul>
                 </div>
                 <div class="swiper-slide"><img class="banner_image" src="./image/banner/C4WcRQeVMAENLna.jpg" alt="">
-                    <ul class="banner_button btn btn-outline-dark border-light">
-                        <li><a href="#about">開始探索</a>
+                    <ul class="banner_button btn btn-outline-dark border-light hvr-wobble-vertical">
+                        <li><a href="#navbar">開始探索</a>
                     </ul>
                 </div>
                 <div class="swiper-slide"><img class="banner_image"
                         src="./image/banner/20861899_1475762212482171_1766205133724260022_o.jpg" alt="">
-                    <ul class="banner_button btn btn-outline-dark border-light">
-                        <li><a href="#about">開始探索</a>
+                    <ul class="banner_button btn btn-outline-dark border-light hvr-wobble-vertical">
+                        <li><a href="#navbar">開始探索</a>
                     </ul>
                 </div>
             </div>
@@ -521,9 +1066,9 @@
     </div>
 
     <nav>
-        <div class="navbar navbar-expand-lg navbar-light ">
+        <div id="navbar" class="navbar navbar-expand-lg navbar-light">
             <div class="navbar_all">
-                <div class="navbar_logo d-none d-lg-block d-xl-block">
+                <div class="navbar_logo navbar-brand d-none d-lg-block d-xl-block">
                     <img src="./image/logo.PNG" alt="">
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -531,31 +1076,35 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar_linkMain collapse navbar-collapse " id="navbarToggleExternalContent">
-                    <ul class="links1 navbar-nav ">
-                        <li class="mx-lg-4"><a href="">首頁</a>
-                        <li class="mx-lg-4"><a href="#about">關於興趣箱</a>
-                            <!-- <ul> c
-                                    <li><a data-scroll href=>興趣箱簡介</a></li>
-                                    <li><a data-scroll href=>使命</a></li>
-                                </ul> -->
+
+                <div class="navbar_linkMain collapse navbar-collapse" id="navbarToggleExternalContent">
+                    <ul class="links1 navbar-nav">
+                        <li class="mx-lg-4"><a class="dropdown" href="#banner">首頁</a>
+                        <li class="mx-lg-4"><a class="dropdown" href="#about">關於興趣箱</a>
+                            <ul>
+                                <li><a href="#about">興趣箱簡介</a</li> <li><a href="#classification">興趣箱類別</a></li>
+                                <li><a href="#misson">我們的使命</a></li>
+                            </ul>
                         </li>
-                        <li class="mx-lg-4"><a href="#subscription">立即訂閱</a></li>
-                        <li class="mx-lg-4"><a href="#form">歷史查詢</a></li>
-                        <li class="mx-lg-4"><a href="#contact">聯絡我們</a></li>
+                        <li class="mx-lg-4"><a class="dropdown" href="#subscription">立即訂閱</a></li>
+                        <li class="mx-lg-4"><a class="dropdown" href="#form">主題查詢</a>
+                            <ul>
+                                <li><a href="#theme">本月主題</a</li> <li><a href="#form">歷史查詢</a></li>
+                            </ul>
+                        </li>
+                        <li class="mx-lg-4"><a class="dropdown" href="#contact">聯絡我們</a></li>
                     </ul>
                 </div>
-                <div class="navbar_linkSecondary collapse navbar-collapse justify-content-end"
-                    id="navbarToggleExternalContent">
-                    <ul class="links2 navbar-nav">
-                        <li><a href=""> <img src="./image/account.png" alt="">會員</a></li>
-                        <li><a href=""><img src="./image/shopping-cart-black-shape.png" alt="">購物車</a></li>
+                <div class="navbar_linkSecondary justify-content-end">
+                    <ul class="links2">
+                        <li><a href=""><img src="./image/account.png" alt=""></a></li>
+                        <li><a href=""><img src="./image/shopping-cart-black-shape.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-
+    <!-- 關於興趣箱 -->
     <div id="about" class="container">
         <div class="title">
             <h3>關於興趣箱</h3>
@@ -566,10 +1115,10 @@
         <div class="about_content row">
             <div class="about_images col-xl-6">
                 <div class="about_image_group1">
-                    <img src="./image/熱銷10/香水.jpg" alt="">
-                    <img src="./image/熱銷10/手工筆記本裝訂套件.jpg" alt="">
+                    <img class="hvr-grow" src="./image/熱銷10/香水.jpg" alt="">
+                    <img class="hvr-grow" src="./image/熱銷10/手工筆記本裝訂套件.jpg" alt="">
                 </div>
-                <div class="about_image_group2">
+                <div class="about_image_group2 hvr-pulse">
                     <img src="./image/banner/IMG_4439.jpg" alt="">
                 </div>
             </div>
@@ -601,45 +1150,124 @@
             </div>
         </div>
     </div>
-
+    <!-- 興趣箱內容類型 -->
     <div id="classification" class="classification">
         <div class="container">
             <div class="about_subtitle">
                 <h4> ❖興趣箱裡有什麼?</h4>
             </div>
-            <div class="classification_content row  justify-content-md-center">
-                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/配飾.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/食品.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/植栽.jpg" alt="">
+            <div class="classification_content row justify-content-md-center">
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/配飾.jpg" alt="">
+                    <div class="mask">
+                        <p><span>配飾</span></p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/食品.jpg" alt="">
+                    <div class="mask">
+                        <p>食品</p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/植栽.jpg" alt="">
+                    <div class="mask">
+                        <p>植栽</p>
+                    </div>
+                </div>
             </div>
             <div class="classification_content row justify-content-md-center">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/木製.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/蠟燭.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/著色.jpeg" alt="">
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/木製.jpg" alt="">
+                    <div class="mask">
+                        <p>木製</p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/蠟燭.jpg" alt="">
+                    <div class="mask">
+                        <p>蠟燭</p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/著色.jpeg" alt="">
+                    <div class="mask">
+                        <p>著色</p>
+                    </div>
+                </div>
             </div>
             <div class="classification_content row justify-content-md-center">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/黏土.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/紙藝.jpg" alt="">
-                <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/皮革.jpg" alt="">
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/黏土.jpg" alt="">
+                    <div class="mask">
+                        <p>黏土</p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/紙藝.jpg" alt="">
+                    <div class="mask">
+                        <p>紙藝</p>
+                    </div>
+                </div>
+                <div class="classification_images col-xl-4 col-md-3 col-sm-4">
+                    <img class="classification_image" src="./image/類型/皮革.jpg" alt="">
+                    <div class="mask">
+                        <p>皮革</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 手機板 classification Swiper -->
+            <div class="swiper-container swiper_mobileClassification">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4 col-md-3 col-12" src="./image/類型/配飾.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/食品.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12 " src="./image/類型/植栽.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/木製.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/蠟燭.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/著色.jpeg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/黏土.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/紙藝.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="classification_image col-xl-4  col-md-3 col-12" src="./image/類型/皮革.jpg" alt="">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
-
+    <!-- 使命 -->
     <div id="misson">
         <div class="misson_all ">
             <div class="container">
-                <div class="misson_title">
+                <div class="misson_title" data-aos="fade-up" data-aos-duration="2000">
                     <h2>我們的使命</h2>
                 </div>
-                <div class="misson_content">
+                <div class="misson_content" data-aos="fade-up" data-aos-duration="3000">
                     <p>透過我們精心挑選的材料和簡單的說明手冊，協助訂閱者開發新的興趣，讓您在探索自己的路上樂趣滿載。</p>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- 本月主題預告 -->
     <div id="theme">
-        <div class="theme_all ">
+        <div class="theme_all container-fluid">
             <div class="theme_image"><img src="./image/OAIGQU0.jpg" alt=""></div>
             <div class="theme_content">
                 <div class="theme_title">
@@ -653,7 +1281,7 @@
             </div>
         </div>
     </div>
-
+    <!-- 歷史查詢 -->
     <div id="form" class="form">
         <div class="container">
             <div class="form_title ">
@@ -674,6 +1302,7 @@
                         <div class="form-group">
                             <select class="form-control">
                                 <option>Month</option>
+                                <option>December</option>
                                 <option>JANUARY</option>
                                 <option>FEBRUARY</option>
                                 <option>MARCH</option>
@@ -685,14 +1314,16 @@
                         <img src="./image/searching-magnifying-glass24.png" alt=""> &nbsp搜尋</button>
                 </div>
             </form>
-            <div class="form_image ">
-                <img width="180px" height="180px" src="./image/歷史查詢icons/歷史查詢icon-02.png" alt="">
+            <div class="form_image">
+                <img data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="3000" width="180px"
+                    height="180px" src="./image/歷史查詢icons/歷史查詢icon-02.png" alt="">
             </div>
-            <div class="form_image2 ">
-                <img width="180px" height="180px" src="./image/歷史查詢icons/歷史查詢-03.png" alt=""></div>
+            <div class="form_image2">
+                <img data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="3000" width="180px"
+                    height="180px" src="./image/歷史查詢icons/歷史查詢-03.png" alt=""></div>
         </div>
     </div>
-
+    <!-- 訂閱方案 -->
     <div id="subscription" class="subscription">
         <div class="container">
             <div class="subscription_all">
@@ -700,35 +1331,62 @@
                     <h2> 訂閱方案</h2>
                 </div>
                 <div class="subscription_content row justify-content-xl-center justify-content-md-center">
-                    <div class="card col-xl-3 col-md-3 col-12 " style="width: 18rem;">
-                        <img src="./image/方案訂閱/1月.PNG" class="card-img-top" alt="...">
-                        <div class="card-body  ">
+                    <div class="card col-xl-3 col-md-3 col-sm-3 col-12 " style="width: 18rem;">
+                        <img src="./image/方案訂閱/1月-3.PNG" class="card-img-top" alt="...">
+                        <div class="card-body">
                             <h5 class="card-title">1個月方案</h5>
                             <p class="card-text">$300/月</p>
-                            <a href="#" class="btn btn-dark ">立即訂閱 </a>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
                         </div>
                     </div>
-                    <div class="card col-xl-3 col-md-3 col-12" style="width: 18rem;">
+                    <div class="card col-xl-3 col-md-3 col-sm-3 col-12" style="width: 18rem;">
                         <img src="./image/方案訂閱/3月.PNG" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">3個月方案</h5>
                             <p class="card-text">$810/3月</p>
-                            <a href="#" class="btn btn-dark">立即訂閱 </a>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
                         </div>
                     </div>
-                    <div class="card col-xl-3 col-md-3 col-12" style="width: 18rem;">
+                    <div class="card col-xl-3 col-md-3 col-sm-3 col-12" style="width: 18rem;">
                         <img src="./image/方案訂閱/6月.PNG" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">6個月方案</h5>
                             <p class="card-text">$1440/6月</p>
-                            <a href="#" class="btn btn-dark ">立即訂閱 </a>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 訂閱方案手機板 -->
+                <div class="subscription_content_mobile">
+                    <div class="card_mobile">
+                        <img src="./image/方案訂閱/1月-3.PNG" alt="">
+                        <div class="card_body_mobile">
+                            <h5 class="card-title">1個月方案</h5>
+                            <p class="card-text">$300/月</p>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
+                        </div>
+                    </div>
+                    <div class="card_mobile">
+                        <img src="./image/方案訂閱/3月.PNG" alt="">
+                        <div class="card_body_mobile">
+                            <h5 class="card-title">3個月方案</h5>
+                            <p class="card-text">$810/3月</p>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
+                        </div>
+                    </div>
+                    <div class="card_mobile">
+                        <img src="./image/方案訂閱/6月.PNG" alt="">
+                        <div class="card_body_mobile">
+                            <h5 class="card-title">6個月方案</h5>
+                            <p class="card-text">$1440/6月</p>
+                            <a href="#" class="btn btn-dark hvr-buzz">立即訂閱 </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- 聯絡表單 -->
     <div id="contact">
         <div class="contact_all_title">
             <h2>聯絡我們</h2>
@@ -740,44 +1398,48 @@
                 </div>
                 <form>
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">姓名</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                        <label for="inputName" class=" col-md-4 col-xl-3 col-form-label">姓名</label>
+                        <div class=" col-md-8 col-xl-9">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name"
+                                required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPhone" class="col-sm-3 col-form-label">電話</label>
-                        <div class="col-sm-9">
+                        <label for="inputPhone" class="col-md-4 col-xl-3 col-form-label">電話</label>
+                        <div class="col-md-8 col-xl-9">
                             <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <label for="inputEmail3" class="col-md-4 col-xl-3 col-form-label">Email</label>
+                        <div class="col-md-8 col-xl-9">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email"
+                                required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleFormControlTextarea1" class="col-sm-3 col-form-label">留言內容</label>
-                        <div class="col-sm-9"> <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="請輸入文字"></textarea>
+                        <label for="exampleFormControlTextarea1" class="col-md-4 col-xl-3 col-form-label">留言內容</label>
+                        <div class="col-md-8 col-xl-9"> <textarea class="form-control" id="exampleFormControlTextarea1"
+                                rows="3" placeholder="請輸入文字" required="required"></textarea>
                         </div>
 
                     </div>
                     <div class="form-group row">
-                        <label for="exampleFormControlFile1" class="col-sm-3 ">照片上傳</label>
-                        <input type="file" class="form-control-file col-sm-9 " id="exampleFormControlFile1">
+                        <label for="exampleFormControlFile1" class="col-md-4 col-xl-3">照片上傳</label>
+                        <input type="file" class="form-control-file col-md-8" id="exampleFormControlFile1">
                     </div>
-                    <div class="form-group row justify-content-xl-center justify-content-md-center ">
-                        <div class="col-sm-3 ">
-                            <button type="submit" class="btn btn-dark  ">Send</button>
+                    <div class="form-group row justify-content-center">
+                        <div class="justify-content-center">
+                            <button type="submit" class="btn btn-dark">Send</button>
                         </div>
                     </div>
                 </form>
             </div>
+            <!-- 常見問題、聯絡資訊 -->
             <div class="contact_detail">
                 <div class="contact_question">
-                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-dark btn-lg hvr-pulse-shrink" data-toggle="modal"
+                        data-target="#exampleModal">
                         常見問題
                     </button>
                     <!-- Modal -->
@@ -811,20 +1473,21 @@
                     </div>
                 </div>
                 <div class="contact_information">
-                    <div class="contact_detail_title">聯絡資訊</div>
+                    <div class="contact_detail_title hvr-bubble-float-bottom">聯絡資訊</div>
                     <div class="contact_content">
                         <p>服務時間:9:00~17:00</p>
                         <p>電話:00-12345678</p>
                         <p>信箱:hobbyboxtw@gmail.com</p>
                     </div>
                 </div>
-                <div class="contact_images">
+                <div class="contact_images hvr-wobble-bottom">
                     <img src="./image/contact-02.png" alt="">
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- footer頁尾 -->
     <footer id="footer">
         <div class="container">
             <div class="social_title">Follow us</div>
@@ -870,10 +1533,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- AOS初始化 -->
+    <script>
+        AOS.init();
+    </script>
 
     <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.swiper_banner', {
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -884,22 +1553,58 @@
             loop: true,
         });
 
-
-        // $(document).scroll(function () {
-        //     var documentScrollTop = $(document).scrollTop();
-        //     if (documentScrollTop > $('.banner').height()) {
-        //         $('.navbar').addClass('fixedattop');
-        //         var shiftContent = $('.navbar').height();
-        //         $('#about').css('margin-top', shiftContent + 'px');
-        //     }
-        //     else if ($('.navbar').hasClass('fixedattop')) {
-        //         $('.navbar').removeClass('fixedattop');
-        //         $('#about').css('margin-top', '0px');
-        //     }
-        // });
-
     </script>
 
+    <!-- 手機類別swiper -->
+    <script>
+        var swiper = new Swiper('.swiper_mobileClassification', {
+            effect: 'cube',
+            grabCursor: true,
+            loop: true,
+            cubeEffect: {
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+
+    <!-- sticky navbar -->
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+    <!-- navbar漢堡條彈出由左至右 -->
+    <script>
+        const $menu = $('#navbarToggleExternalContent');
+
+        $menu.on('show.bs.collapse', function () {
+            $menu.addClass('menu-show');
+        });
+
+        $menu.on('hide.bs.collapse', function () {
+            $menu.removeClass('menu-show');
+        });
+    </script>
 </body>
 
 </html>
